@@ -27,12 +27,24 @@
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Send_Mail', send_post_pdf_post_path(post)  %></td>
+        <td><%= link_to 'Send_Mail', send_post_pdf_path  %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+<%#= label_tag 'layout', 'Select Layout For Generating PDF:' %>
+  <%#= select_tag 'layout', options_for_select([['Layout1', 'sangeetadhiman2003@gmail.com'], ['Layout2', 'mithilesh.goyal1@gmail.com']]), class: 'select', class: "form-control" %>
+
+  <%= form_tag({controller: 'posts', action: 'send_post_pdf'}, method: 'post') do %>
+    <%= label_tag 'layout', 'Enter mail For send PDF:' %>
+
+    <%#= select_tag 'layout', options_for_select([['Layout1', 'sangeetadhiman2003@gmail.com'], ['Layout2', 'mithilesh.goyal1@gmail.com']]), class: 'select', class: 'form-control' %>
+
+    <%= text_field_tag 'layout', '', class: 'form-control' %>
+
+    <%= submit_tag 'Send PDF' %>
+  <% end %>
 
 <%= link_to 'New Post', new_post_path %>

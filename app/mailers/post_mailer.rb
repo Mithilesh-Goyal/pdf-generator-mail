@@ -48,11 +48,18 @@ class PostMailer < ApplicationMailer
     mail(to: recipient_email, subject: "Post PDF: #{@post.title}")
   end
 
-  def send_post_pdf(post_id, recipient_email)
-    @post = Post.find(post_id)
-    mail(to: recipient_email, subject: "Your Post PDF")
-  end
+  # def send_post_pdf(post_id, recipient_email)
+  #   @post = Post.find(post_id)
+  #   mail(to: recipient_email, subject: "Your Post PDF")
+  # end
 
+  def send_email(selected_layout)
+    @selected_layout = selected_layout
+    # @post = post
+    @subject = "Greeting"
+    @message = "How are you?"
+    mail(to: @selected_layout, subject: @subject)
+  end
 
   private
 

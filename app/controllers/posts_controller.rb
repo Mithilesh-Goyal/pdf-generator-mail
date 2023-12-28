@@ -80,14 +80,24 @@ class PostsController < ApplicationController
   end
 
 
+  def send_post_pdf
+    # @post = Post.find(params[:id])
+    selected_layout = params[:layout]
+
+
+    PostMailer.send_email(selected_layout).deliver_now
+    # render nothing: true
+    # redirect_to post_path(@post), notice: "Email send successfully"
+  end
 
   # In posts_controller.rb
-  def send_post_pdf
-    @post = Post.find(params[:id])
-    recipient_email = params[:recipient_email] # Assuming email address is provided in form params
+  # def send_post_pdf
+  #   @post = Post.find(params[:id])
+  #   # recipient_email = "mithilesh.goyal1@gmail.com"
+  #   recipient_email = params[:recipient_email] # Assuming email address is provided in form params
 
-    PostMailer.send_post_pdf(@post.id, recipient_email).deliver_now
-  end
+  #   PostMailer.send_post_pdf(@post.id, recipient_email).deliver_now
+  # end
 
   # def send_post_pdf
   #   @post = Post.find(params[:id])
