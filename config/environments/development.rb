@@ -82,11 +82,8 @@ config.action_mailer.smtp_settings = {
   :port                 => 587,
   :domain               =>'gmail.com',
   :user_name            => "mithilesh.goyal1@gmail.com",
-  :password             => "brkn okfv mnsx smsn
-  ",
+  :password             => "brkn okfv mnsx smsn",
   :authentication       => "plain",
   :enable_starttls_auto => true,
-
-
 }
 end

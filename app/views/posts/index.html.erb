@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Posts</h1>
+
+<%= link_to "New Post", new_post_path %>
+<%= link_to "Posts PDF", posts_path(format: :pdf) %>
+<br>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Content</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.id %></td>
+        <td><%= post.title %></td>
+        <td><%= simple_format(post.content) %></td>
+        <td><%= link_to 'pdf', post_path(post, format: :pdf) %></td>
+        <td><%= link_to 'Show', post %></td>
+        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Send_Mail', send_post_pdf_post_path(post)  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Post', new_post_path %>
