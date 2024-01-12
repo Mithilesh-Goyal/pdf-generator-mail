@@ -83,8 +83,6 @@ class PostsController < ApplicationController
   def send_post_pdf
     # @post = Post.find(params[:id])
     selected_layout = params[:layout]
-
-
     PostMailer.send_email(selected_layout).deliver_now
     # render nothing: true
     # redirect_to post_path(@post), notice: "Email send successfully"

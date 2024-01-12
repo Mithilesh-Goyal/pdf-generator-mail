@@ -16,7 +16,6 @@
     </tr>
   </thead>
 
-
   <tbody>
     <% @posts.each do |post| %>
       <tr>
@@ -28,10 +27,30 @@
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td><%= link_to 'Send_Mail', send_post_pdf_path  %></td>
+
+        <td>
+          <%= form_tag({controller: 'posts', action: 'send_post_pdf'}, method: 'post') do %>
+            <%= hidden_field_tag 'post_id', post.id %>
+             <% if @post %>
+              <%= hidden_field_tag 'post_id', @post.id %>
+              <% else %>
+            <% end %>
+
+            <%= label_tag 'layout', 'Enter mail For send PDF:' %>
+            <%= text_field_tag 'layout', '', class: 'form-control' %>
+            <%= submit_tag 'Send PDF' %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+
+
+
+
+
 
 <br>
 <%#= label_tag 'layout', 'Select Layout For Generating PDF:' %>
